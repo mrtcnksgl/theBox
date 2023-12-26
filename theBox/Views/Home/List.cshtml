@@ -1,0 +1,45 @@
+﻿@using theBox.Entity;
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container">
+    <div class="row mt-5">
+
+        <div class="col-md-3">
+            @Html.Action("GetCategories","Home")
+        </div>
+        <div class="col-md-9">
+
+            <div class="row">
+
+                @foreach (var urun in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="~/theme/img/@urun.Image" class="card-img-top" alt="@urun.Name">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="/Home/Details/@urun.Id">@urun.Name</a>
+                                </h4>
+                                <p class="card-text">
+                                    @urun.Description
+                                </p>
+                                <div class="card-text">
+                                    <small class="text-muted  product-price">
+                                        @urun.Price ₺
+                                    </small>
+                                    <a href="/Home/Details/@urun.Id" class="btn btn-default btn-sm float-right">
+                                        Ürünü incele <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
